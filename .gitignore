@@ -1,1 +1,8 @@
 node_modules/
+
+//File EXT
+*.db
+*.md
+
+//Files
+package-lock.json
