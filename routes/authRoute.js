@@ -13,11 +13,11 @@ router.get("/login", (req, res) => {
         res.redirect("/");
     }
 
-    res.render("login");
+    res.render("loginPage");
 });
 
 router.get("/register", (req, res) => {
-    res.render("register");
+    res.render("registerPage");
 });
 
 router.route("/logout").get(logoutUser);
