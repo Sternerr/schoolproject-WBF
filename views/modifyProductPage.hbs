@@ -3,14 +3,10 @@
         <form class="auth__form" action="/admin/products/modify" method="post" enctype="multipart/form-data">
             {{!-- <img src="{{product.image}}"> --}}
             <input type="hidden" name="id" value="{{product.id}}">
-            <input class="{{#if form.name}} invalid {{/if}}"  
-            type="file" placeholder="Image" name="image">
-            <input class="{{#if form.email}} invalid {{/if}}" 
-            type="text" placeholder="Product Name" name="name" value="{{product.name}}" required>
-            <input class="{{#if form.email}} invalid {{/if}}" 
-            type="number" placeholder="Product Price" name="price" value="{{product.price}}" required>
-            <input class="{{#if form.email}} invalid {{/if}}" 
-            type="number" placeholder="In Stock" name="stock" value="{{product.stock}}" required>
+            <input type="file" placeholder="Image" name="image">
+            <input type="text" placeholder="Product Name" name="name" value="{{product.name}}" required>
+            <input type="number" placeholder="Product Price" name="price" value="{{product.price}}" required>
+            <input type="number" placeholder="In Stock" name="stock" value="{{product.stock}}" required>
 
 
             <button class="button button--primary button--filled" type="submit">Modify</button>

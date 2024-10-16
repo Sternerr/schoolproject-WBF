@@ -47,5 +47,4 @@ router.route("/users/delete/:id").get(deleteUser);
 router.route("/users/modify/:id").get(getModifyUserPage);
 router.route("/users/modify").post(modifyUser);
 
-
 module.exports = router;

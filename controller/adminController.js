@@ -24,14 +24,14 @@ const getProductsAddPage = asyncHandler(async (req, res) => {
 // @desc POST Product
 // @access Private/Admin
 const addProduct = asyncHandler(async (req, res) => {
-    await UserService.create({
+    await ProductService.create({
         name: req.body.name,
         price: req.body.price,
         stock: req.body.stock,
         image: `/assets/uploads/${req.file.filename}`
     });
 
-    res.redirect("/admin/products/add");
+    res.redirect("/admin/products");
 });
 
 // @desc DELETE Product
@@ -53,10 +53,12 @@ const getModifyProductPage = asyncHandler(async (req, res) => {
 // @desc Get Modify Product Page
 // @access Private/Admin
 const modifyProduct = asyncHandler(async (req, res) => {
-    const { image, name, price, stock, id } = req.body;
+    const { name, price, stock, id } = req.body;
 
-    if(image) {
-        await ProductService.update({ name, price, stock, image, id});
+    console.log(req.file.filename);
+
+    if(req.file.filename) {
+        await ProductService.update({ name, price, stock, image: `/assets/uploads/${req.file.filename}`, id });
     } else {
         await ProductService.update({ name, price, stock, image: null, id});
     }
@@ -87,7 +89,7 @@ const addUser = asyncHandler(async (req, res) => {
         let user = await UserService.authUser(email.toLowerCase());
 
         if(!user) {
-            await UserService.createUser({
+            await UserService.create({
                 name: name,
                 email: email,
                 password: await bcrypt.hash(password, salt),

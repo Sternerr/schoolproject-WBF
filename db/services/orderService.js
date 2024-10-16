@@ -14,7 +14,7 @@ class OrderService {
         });
     }
 
-    static getAllOrders() {
+    static getAll() {
         const sql = `SELECT * FROM orders`;
 
         return new Promise((resolve, reject) => {
@@ -26,14 +26,13 @@ class OrderService {
         });
     }
 
-    static getOrderById(id) {
+    static getById(id) {
         const sql = `SELECT * FROM orders WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             db.get(sql, [id], (err, row) => {
                 if (err) return reject(err);
 
-                // console.log(row)
                 resolve(new OrderModel(row.id, row.user_id, row.order_date, row.total));
             });
         });
@@ -54,15 +53,16 @@ class OrderService {
         INNER JOIN
             products ON products.id = order_items.product_id
         WHERE
-            users.id = ?
+            users.id = ?;
         `;
 
         return new Promise((resolve, reject) => {
-            db.all(sql, [id], (err, rows) => {
-                if (err) return reject(err);
-
-                // console.log(row)
-                resolve(rows.map(row => ({ name: row.name, quantity: row.quantity, date: row.order_date })));
+            db.all(sql, [id], (err, rows) => {                  
+                resolve(rows.map(row => ({
+                    name: row.name, 
+                    quantity: row.quantity, 
+                    date: row.order_date
+                })));
             });
         });
     }

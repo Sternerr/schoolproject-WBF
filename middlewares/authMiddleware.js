@@ -7,6 +7,7 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
     const token = req.cookies.jwt;
 
     if(!token) {
+        req.user = null;
         return next();
     }
 
@@ -18,11 +19,10 @@ const isAuthenticated = asyncHandler(async (req, res, next) => {
 
 // Middleware function to check if the authenticated user is an admin
 const admin = asyncHandler(async (req, res, next) => {
-    if(req.user && req.user.isAdmin) {
-        next()
+    if(req.user && req.user.user.isAdmin) {
+        return next()
     } else {
-        res.status(401);
-        throw new Error("Not Authorized");
+        return res.redirect("/");
     }
 })
 

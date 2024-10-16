@@ -1,9 +1,9 @@
 <section class="auth block">
     <div class="auth__container">
         <form class="auth__form" action="/auth/register" method="post">
-            <input class="{{#if form.name}} invalid {{/if}}"  type="text" placeholder="Name" name="name">
-            <input class="{{#if form.email}} invalid {{/if}}" type="text" placeholder="Email" name="email">
-            <input class="{{#if form.password}} invalid {{/if}}" type="password" placeholder="Password" name="password">
+            <input class="{{#if form.name}} invalid {{/if}}"  type="text" placeholder="Name" name="name" required>
+            <input class="{{#if form.email}} invalid {{/if}}" type="text" placeholder="Email" name="email" required>
+            <input class="{{#if form.password}} invalid {{/if}}" type="password" placeholder="Password" name="password" required>
 
             <button class="button button--primary button--filled" type="submit">Sign Up</button>
             <a href="/auth/login"><button class="button button--secondary button--outlined" type="button">Login</button></a>

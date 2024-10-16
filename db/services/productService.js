@@ -60,10 +60,10 @@ class ProductService {
     }
 
     static update(product) {
-        const sql = `UPDATE products SET name = ?, price = ?, stock = ? WHERE id = ?`;
+        const sql = `UPDATE products SET name = ?, price = ?, stock = ?, image = ? WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
-            db.run(sql, [product.name, product.price, product.stock, product.id], (err) => {
+            db.run(sql, [product.name, product.price, product.stock, product.image, product.id], (err) => {
                 if (err) return reject(err);
 
                 resolve();

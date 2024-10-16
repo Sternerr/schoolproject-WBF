@@ -1,7 +1,10 @@
 const db = require("../db.js");
 const User = require("../models/userModel.js");
 
+// UserService class to manage database operations related to the 'users' table
 class UserService {
+    
+    // Create a new user in the database
     static create(user) {
         const sql = `INSERT INTO users (name, email, password, isAdmin) VALUES (?, ?, ?, ?)`;
 
@@ -14,6 +17,7 @@ class UserService {
         });
     }
 
+    // Authenticate a user by their email
     static authUser(email) {
         const sql = `SELECT * FROM users WHERE email = ?`;
 
@@ -24,16 +28,17 @@ class UserService {
                 if(!row) return resolve();
 
                 resolve(new User(
-                    row.id,
                     row.name,
                     row.email,
                     row.password,
-                    row.isAdmin
+                    row.isAdmin,
+                    row.id
                 ));
             });
         });
     }
 
+    // Get a user by their ID
     static getById(id) {
         const sql = `SELECT * FROM users WHERE id = ?`;
 
@@ -41,11 +46,12 @@ class UserService {
             db.get(sql, [id], (err, row) => {
                 if (err) return reject(err);
 
-                resolve(new User(row.id, row.name, row.email, row.password, row.isAdmin));
+                resolve(new User(row.name, row.email, row.password, row.isAdmin, row.id));
             });
         });
     }
 
+    // Get all users from the database
     static getAll() {
         const sql = `SELECT * FROM users`;
 
@@ -53,13 +59,14 @@ class UserService {
             db.all(sql, [], (err, rows) => {
                 if (err) return reject(err);
 
-                resolve(rows.map(row => new User(row.id, row.name, row.email, row.password, row.isAdmin)));
+                resolve(rows.map(row => new User(row.name, row.email, row.password, row.isAdmin, row.id)));
             });
         });
     }
 
+    // Update an existing user's details
     static update(user) {
-        const sql = `UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?`;
+        const sql = `UPDATE users SET name = ?, email = ?, password = ?, isAdmin = ? WHERE id = ?`;
 
         return new Promise((resolve, reject) => {
             db.run(sql, [user.name, user.email, user.password, user.id, user.isAdmin], (err) => {
@@ -70,6 +77,7 @@ class UserService {
         });
     }
 
+    // Delete a user by their ID
     static delete(id) {
         const sql = `DELETE FROM users WHERE id = ?`;
 
