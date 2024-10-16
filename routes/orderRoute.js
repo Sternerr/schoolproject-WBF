@@ -5,10 +5,11 @@ const {
     createOrder,
 } = require("../controller/orderController");
 
+const { isAuthenticated } = require("../middlewares/authMiddleware")
 
 
-router.route("/").get(getOrders);
-router.route("/create").get(createOrder);
+router.route("/").get(isAuthenticated, getOrders);
+router.route("/create").get(isAuthenticated, createOrder);
 
 
 module.exports = router;

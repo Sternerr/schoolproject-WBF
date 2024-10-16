@@ -5,14 +5,26 @@ const ProductService = require("../db/services/productService");
 const OrderService = require("../db/services/orderService");
 const OrderItemService = require("../db/services/OrderItemService");
 
+// @desc Get all orders for the authenticated user
+// @access Private
 const getOrders = asyncHandler(async (req, res) => {
-    const orders = await OrderService.getUsersOrder(req.user.user.id);
-    
-    res.render("orders", { orders });  
+    if(!req.user) {
+        return res.redirect("/");
+    }
 
+
+    const orders = await OrderService.getUsersOrder(req.user.user.id);
+
+    return res.render("ordersPage", { orders });  
 });
 
+// @desc Create a new order for the user based on the session cart
+// @access Private
 const createOrder = asyncHandler(async (req, res) => {
+    if(!req.user) {
+        return res.redirect("/");
+    }
+
     const cart = req.session.cart;
     const user = req.user;
 
@@ -48,7 +60,7 @@ const createOrder = asyncHandler(async (req, res) => {
 
     req.session.cart = new Array();
 
-    res.redirect("/cart");
+    return res.redirect("/cart");
 })
 
 module.exports = {
