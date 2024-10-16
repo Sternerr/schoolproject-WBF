@@ -1,0 +1,41 @@
+<section class="cart block">
+    <div class="overlap">
+        <div class="cart__container">
+            {{#each cart}}
+                <div class="cartProduct">
+                    <div class="cartProduct__image">
+                        <img src="{{product.image}}">
+                    </div>
+                    <div class="cartProduct__info">
+                        <div class="cartProduct__info__title">
+                            <span>{{product.name}}</span>
+                        </div>
+                        <div class="cartProduct__info__price">
+                            <span>{{product.price}} kr</span>
+                        </div>
+                        <div class="cartProduct__info__quantity">
+                            <input type="number" value="{{amount}}" min="1" max="{{product.stock}}">
+                        </div>
+                    </div>
+                    <div class="cartProduct__remove">
+                        <a href="/cart/remove/{{product.id}}">
+                            <butto class="delete">x</button>
+                        </a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="checkout__container">
+            <div class="checkout__price">
+                <span><strong>Total:</strong></span>
+                <span>{{totalPrice}} kr</span>
+            </div>
+            {{#if user}}
+            <a href="/orders/create"><button class="primary filled">Pay</button></a>
+            {{else}}
+            <button class="primary filled" disabled>Pay</button>
+            {{/if}}
+
+        </div>
+    </div>
+</section>

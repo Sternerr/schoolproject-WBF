@@ -1,0 +1,16 @@
+<section class="pagination block">
+    <div class="pagination__container">
+        {{> product products=products}}       
+    </div>
+    <div class="pagination__nav">
+        {{#if pagination.hasPrevPage }}
+        <a href="/catalogue?page={{ pagination.prevPage }}"><button id="prev-btn" class="primary outlined">Previous</button></a>
+        {{/if}}
+
+        <span id="page-number">Page {{ pagination.currentPage }} of {{ pagination.totalPages }}</span>
+        
+        {{#if pagination.hasNextPage }}
+        <a href="/catalogue?page={{ pagination.nextPage }}"><button id="next-btn" class="primary outlined">Next</button></a>
+        {{/if}}
+    </div>
+</section>

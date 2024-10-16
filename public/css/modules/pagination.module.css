@@ -1,0 +1,36 @@
+.pagination {
+    max-width: 1400px !important;
+    width: 100%;
+
+    margin: 0 auto;
+    padding-block: 30px;
+}
+
+.pagination__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 64px;
+}
+
+.pagination__nav {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.pagination button:disabled {
+    background-color: orange;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 1200px) {
+    .pagination__container {
+        grid-template-columns: repeat(2, 1fr);    
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .pagination__container {
+        grid-template-columns: 1fr;    
+    }
+}

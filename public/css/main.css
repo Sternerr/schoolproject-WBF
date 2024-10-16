@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "./modules/_modules.css";
+@import "./pages/_pages.css";
+
+:root {
+    --primary40: #008080;
+    --primary-on: #FFFFFF;
+    --secondary40: #5F6A6A;
+
+    --surface-container: #F2F2F2;
+    --surface-on: #000000;
+    --surface-dark-on: #ffffff;
+
+
+    --breakpoint-s: 735px;
+    --breakpoint-m: 1200px;
+    --breakpoint-l: 1400px;
+
+    --fs-40: 18px;
+    --fs-50: 20px;
+    --fs-60: 28px;
+    --fs-70: 48px;
+    --fs-80: 64px;
+    --fs-90: 84px;
+    --fs-100: 94px;
+    --fs-l: 120px;
+}
+
+*, html { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+img { width: 100%; border-radius: inherit; }
+
+input{
+    padding: 15px;
+
+    border: none;
+    border-radius: 15px;
+
+    background-color: var(--surface-container);
+    outline: none;
+
+    font-size: var(--fs-50);
+}
+
+input.invalid {
+    border: 2px solid red;
+}

@@ -1,0 +1,11 @@
+<section class="auth block">
+    <div class="auth__container">
+        <form class="auth__form" action="/auth/login" method="post">
+            <input class="{{#if form.name}} invalid {{/if}}" type="text" placeholder="Email" name="email">
+            <input class="{{#if form.password}} invalid {{/if}}" type="password" placeholder="Password" name="password">
+
+            <button class="button button--primary button--filled" type="submit">Login</button>
+            <a href="/auth/register"><button class="button button--secondary button--outlined" type="button">Sign Up</button></a>
+        </form>     
+    </div>
+</section>

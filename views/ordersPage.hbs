@@ -1,0 +1,25 @@
+<section class="orders block">
+    <div class="orders__container">
+        <div class="order__title">
+            <h1>Your Orders</h1>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>quantity</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#orders}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{quantity}}</td>
+                    <td>{{date}}</td>
+                </tr>
+                {{/orders}}
+            </tbody>
+        </table>
+    </div>
+</section>

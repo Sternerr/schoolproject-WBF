@@ -1,0 +1,14 @@
+<section class="addProduct block">
+    <div class="auth__container">
+        <form class="auth__form" action="/admin/users/add" method="post">
+            <input type="text" placeholder="Name" name="name" required>
+            <input class="{{#if form.email}} invalid {{/if}}" type="text" placeholder="Email" name="email" required>
+            <input class="{{#if form.password}} invalid {{/if}}" type="password" placeholder="Password" name="password" required>
+
+
+            <button class="button button--primary button--filled" type="submit">Add</button>
+            <a href="/admin/users"><button class="button button--primary button--outlined" type="button">Go back</button></a>
+
+        </form>     
+    </div>
+</section>

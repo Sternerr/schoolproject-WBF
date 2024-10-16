@@ -1,0 +1,35 @@
+<section class="orders block">
+    <div class="orders__container">
+        <div class="order__title">
+            <h1>Product Inventory</h1>
+        </div>
+
+        <div class="orders__add">
+            <a href="/admin/products/add"><button class="button button--primary button--filled">Add Product</button></a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each products}}
+                <tr>
+                    <td><img src="{{image}}" alt=""></td>
+                    <td>{{ name }}</td>
+                    <td>{{ price }}</td>
+                    <td>{{ stock }}</td>
+                    <td><a href="/admin/products/modify/{{id}}"><button class="button button--primary button--outlined" type="button">Modify</button></a></td>
+                    <td><a href="/admin/products/delete/{{id}}"><button class="delete" type="button">X</button></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

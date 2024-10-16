@@ -1,0 +1,25 @@
+<div id="dropdown" class="dropdown">
+    <button class="button button--secondary button--text button--nohover">{{ user.name }} &darr;</button>
+
+    <div class="dropdown__content">
+        {{#if user.isAdmin}}
+        <a href="/admin/users">
+            <button class="button button--secondary button--text button--nohover">Users</button>
+        </a>
+        <a href="/admin/products">
+            <button class="button button--secondary button--text button--nohover">Products</button>
+        </a>
+        {{/if }}
+        <a href="/orders">
+            <button class="button button--secondary button--text button--nohover">Your Orders</button>
+        </a>
+        <a href="/cart">
+            <button class="button button--secondary button--text button--nohover">Cart</button>
+        </a>
+        <a href="/auth/logout">
+            <button class="button button--primary button--text">Logout</button>
+        </a>
+    </div>
+</div>
+
+<script src="/assets/js/dropdown.js"></script>

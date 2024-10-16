@@ -2,11 +2,11 @@ const db = require('../db');
 const OrderItemModel = require('../models/orderItemModel');
 
 class OrderItemService {
-    static createOrderItem(orderItem) {
+    static create(orderItem) {
         const sql = `INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)`;
-        
+
         return new Promise((resolve, reject) => {
-            db.run(sql, [orderItem.orderId, orderItem.productId, orderItem.quantity, orderItem.price], function (err) {
+            db.run(sql, [orderItem.orderId, orderItem.productId, orderItem.quantity, orderItem.price], (err) => {
                 if (err) return reject(err);
                 resolve();
             });

@@ -1,0 +1,31 @@
+<header class="header block">
+    <div class="header__overlap">
+        <div class="header__container">
+            <div id="hamburger" class="hamburger" data-isclosed="true">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav id="primaryMenu" class="header__nav" data-isclosed="true">
+                <ul class="header__menu">
+                    <li class="{{isTabActve "home" activeTab}}" data-isActive="true"><a href="/">Home</a></li>
+                    <li class="{{isTabActve "catalogue" activeTab}}"><a href="/catalogue">Catalogue</a></li>
+                    <li class="{{isTabActve "about" activeTab}}"><a href="/about">About</a></li>
+                    <li class="{{isTabActve "contact" activeTab}}"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header__auth__container">
+                {{#if user}}
+                    {{> dropdown }}    
+                {{else}}
+                <a href="/cart">
+                    <button class="button button--secondary button--text">Cart</button>
+                </a>
+                <a href="/auth/login">
+                    <button class="button button--primary button--text">Login</button>
+                </a>
+                {{/if }}
+            </div>
+        </div>
+    </div>
+</header>

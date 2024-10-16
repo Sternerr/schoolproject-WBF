@@ -1,0 +1,32 @@
+<section class="orders block">
+    <div class="orders__container">
+        <div class="order__title">
+            <h1>Users</h1>
+        </div>
+        
+        <div class="orders__add">
+            <a href="/admin/users/add"><button class="button button--primary button--filled">Add Users</button></a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#users}}
+                <tr>
+                    <td>{{ name }}</td>
+                    <td>{{ email }}</td>
+                    <td><a href="/admin/users/modify/{{id}}"><button class="button button--primary button--outlined" type="button">Modify</button></a></td>
+                    <td><a href="/admin/users/delete/{{id}}"><button class="delete" type="button">X</button></a></td>
+                </tr>
+                {{/users}}
+            </tbody>
+        </table>
+    </div>
+</section>

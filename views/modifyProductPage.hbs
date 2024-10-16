@@ -1,0 +1,20 @@
+<section class="addProduct block">
+    <div class="auth__container">
+        <form class="auth__form" action="/admin/products/modify" method="post" enctype="multipart/form-data">
+            {{!-- <img src="{{product.image}}"> --}}
+            <input type="hidden" name="id" value="{{product.id}}">
+            <input class="{{#if form.name}} invalid {{/if}}"  
+            type="file" placeholder="Image" name="image">
+            <input class="{{#if form.email}} invalid {{/if}}" 
+            type="text" placeholder="Product Name" name="name" value="{{product.name}}" required>
+            <input class="{{#if form.email}} invalid {{/if}}" 
+            type="number" placeholder="Product Price" name="price" value="{{product.price}}" required>
+            <input class="{{#if form.email}} invalid {{/if}}" 
+            type="number" placeholder="In Stock" name="stock" value="{{product.stock}}" required>
+
+
+            <button class="button button--primary button--filled" type="submit">Modify</button>
+            <a href="/admin/products"><button class="button button--primary button--outlined" type="button">Go back</button></a>
+        </form>     
+    </div>
+</section>

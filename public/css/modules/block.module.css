@@ -1,0 +1,9 @@
+.block {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.block > * { grid-column: 2/3;}
+.block.fullbleed > * { grid-column: 1/4;}

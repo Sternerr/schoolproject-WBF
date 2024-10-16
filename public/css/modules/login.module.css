@@ -1,0 +1,16 @@
+.auth__container {
+    max-width: 600px;
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+.auth__form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.auth__form button { font-size: var(--fs-50); width: 100%; }
+.auth__form a { display: block; width: 100%;}

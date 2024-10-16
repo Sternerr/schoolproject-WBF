@@ -1,0 +1,23 @@
+<section class="addProduct block">
+    <div class="auth__container">
+        <form class="auth__form" action="/admin/users/modify" method="post">
+
+            <input type="hidden" name="id" value="{{user.id}}">
+
+            <input class="{{#if form.name}} invalid {{/if}}"  
+            type="tex" placeholder="Name" name="name" value="{{user.name}}" required>
+
+            <input class="{{#if form.email}} invalid {{/if}}" 
+            type="text" placeholder="Email" name="email" value="{{user.email}}" required>
+
+            <input class="{{#if form.password}} invalid {{/if}}" 
+            type="password" placeholder="Password" name="password">
+
+            <label for="isAdmin">Is Admin</label>
+            <input id="isAdmin" type="checkbox" name="isAdmin" value="{{user.isAdmin}}">
+
+            <button class="button button--primary button--filled" type="submit">Modify</button>
+            <a href="/admin/products"><button class="button button--primary button--outlined" type="button">Go back</button></a>
+        </form>     
+    </div>
+</section>

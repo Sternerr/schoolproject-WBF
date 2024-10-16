@@ -1,0 +1,15 @@
+<section class="addProduct block">
+    <div class="auth__container">
+        <form class="auth__form" action="/admin/products/add" method="post" enctype="multipart/form-data">
+            <input class="{{#if form.name}} invalid {{/if}}"  type="file" placeholder="Image" name="image" required>
+            <input class="{{#if form.email}} invalid {{/if}}" type="text" placeholder="Product Name" name="name" required>
+            <input class="{{#if form.email}} invalid {{/if}}" type="number" placeholder="Product Price" name="price" required>
+            <input class="{{#if form.email}} invalid {{/if}}" type="number" placeholder="In Stock" name="stock" required>
+
+
+            <button class="button button--primary button--filled" type="submit">Add</button>
+            <a href="/admin/products"><button class="button button--primary button--outlined" type="button">Go back</button></a>
+
+        </form>     
+    </div>
+</section>

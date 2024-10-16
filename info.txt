@@ -1,0 +1,15 @@
+ADMIN ACCOUNT
+    1. email: admin@admin.com, password: 12345678
+
+FURNITURES TAKEN FROM IKEAS WEBSITE
+    1. https://www.ikea.com/se/sv/p/kivik-3-sitssoffa-med-schaeslong-tibbleby-beige-gra-s99440590/
+    2. https://www.ikea.com/se/sv/p/glostad-2-sitssoffa-knisa-moerkgra-50489012/
+    3. https://www.ikea.com/se/sv/p/linanaes-3-sitssoffa-med-schaeslong-vissle-beige-30512235/
+    4. https://www.ikea.com/se/sv/p/oestanoe-stol-svart-remmarn-moerkgra-20545359/
+    5. https://www.ikea.com/se/sv/p/tossberg-stol-metall-vit-gunnared-beige-80565274/
+    6. https://www.ikea.com/se/sv/p/gallerud-stol-skiftebo-moerkgra-30555244/
+    7. https://www.ikea.com/se/sv/p/saeboevik-kontinentalsaeng-fast-vissle-gra-s69385750/
+    8. https://www.ikea.com/se/sv/p/dunvik-kontinentalsaeng-valevag-fast-nisseholm-skiftebo-moerkgra-s09578209/
+    9. https://www.ikea.com/se/sv/p/idanaes-klaedd-saengstomme-med-foervaring-gunnared-moerkgra-90447176/
+
+

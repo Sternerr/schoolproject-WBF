@@ -1,0 +1,38 @@
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.button--filled { border: none; }
+.button--outlined { background: transparent;}
+.button--text { position: relative; background: none;}
+
+.button--text::after { 
+    content: "";
+    position: absolute;
+
+    bottom: 0; left: 0;
+    width: 0;
+    height: 2px;
+
+    transition: width 300ms;
+}
+
+.button--primary.button--filled { background-color: var(--primary40); color: var(--primary-on); font-weight: 800;}
+.button--primary.button--outlined { border: 2px solid var(--primary40); }
+.button--primary.button--text { color: var(--primary40); }
+
+.button--primary.button--text:hover::after { width: 100%; background-color: var(--primary40); }
+
+.button--secondary.button--filled { background-color: var(--secondary40); }
+.button--secondary.button--outlined { border: 2px solid var(--secondary40); }
+.button--secondary.button--text { color: var(--secondary40); }
+
+.button--secondary.button--text:hover::after { width: 100%; background-color: var(--secondary40); }
+
+.button--nohover { pointer-events: none;}
+
+.button[disabled] { opacity: 0.5; cursor: not-allowed;}
