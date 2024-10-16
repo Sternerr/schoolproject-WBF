@@ -2,12 +2,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const asyncHandler = require("../middlewares/asyncHandler");
-const User = require("../db/models/userModel");
-const UserService = require("../db/services/userService");
 const { validateEmail, validatePassword} = require("../utils/validation");
 
-const salt = 10;
-const JWT_SECRET = "secret";
+const UserService = require("../db/services/userService");
 
 // @desc Auth User & Create Session
 // @access Public
@@ -18,19 +15,18 @@ const authUser = asyncHandler(async (req, res) => {
         const user  = await UserService.authUser(email.toLowerCase());
 
         if(user && (await bcrypt.compare(password, user.password))) {        
-            const token = jwt.sign({ user }, JWT_SECRET, { expiresIn: '30d' });
+            const token = jwt.sign({ user }, process.env.JWT_SECRET || "secret", { expiresIn: '30d' });
 
             res.cookie("jwt", token, { 
                 httpOnly: true,
                 maxAge: 30 * 24 * 60 * 60 * 1000
             });
 
-            res.redirect("/");
+            return res.redirect("/");
         } 
     }
 
-    res.status(401);
-    res.render("login", { 
+    return res.render("loginPage", { 
         form: {
             email: !validateEmail(email),
             password: !validatePassword(password),
@@ -47,26 +43,26 @@ const registerUser = asyncHandler(async (req, res) => {
         let user = await UserService.authUser(email.toLowerCase());
 
         if(!user) {
-            await UserService.createUser({
+            await UserService.create({
                 name: name,
                 email: email,
-                password: await bcrypt.hash(password, salt),
+                password: await bcrypt.hash(password, Number(process.env.SALT) || 10),
                 isAdmin: 0
             });
     
             let user  = await UserService.authUser(email.toLowerCase());
             
-            const token = jwt.sign({ user }, JWT_SECRET, { expiresIn: '30d' });
+            const token = jwt.sign({ user }, process.env.JWT_SECRET || "secret", { expiresIn: '30d' });
 
             res.cookie("jwt", token, { 
                 httpOnly: true,
                 maxAge: 30 * 24 * 60 * 60 * 1000
             });
 
-            res.redirect("/");
+            return res.redirect("/");
         } 
     } else {
-        res.render("register", { 
+        return res.render("registerPage", { 
             form: {
                 name: (String(name).length <= 1) ? true : false,
                 email: !validateEmail(email),
@@ -74,52 +70,18 @@ const registerUser = asyncHandler(async (req, res) => {
             }
         });
     }
-
-
 });
 
-// @desc Logout User
+// @desc Logout User && Clear Cookie
 // @access Public
 const logoutUser = asyncHandler(async (req, res) => {
     res.clearCookie('jwt');
     res.redirect('/');
 });
 
-// @desc Get user profile
-const getUserProfile = asyncHandler(async (req, res) => {
-    res.send("User Profile");
-});
-
-// @desc Update User Profile
-const updateUserProfile = asyncHandler(async (req, res) => {
-    res.send("User Profile");
-});
-
-// @desc Get Users
-// @access private/admin
-const getUsers = asyncHandler(async (req, res) => {
-    res.send("Get Users");
-});
-
-// @desc Delete User
-// @access private/admin
-const deleteUsers = asyncHandler(async (req, res) => {
-    res.send("Delete User");
-});
-
-// @desc Update User
-// @access private/admin
-const updateUser = asyncHandler(async (req, res) => {
-    res.send("Delete User");
-});
 
 module.exports = {
     authUser,
     registerUser,
     logoutUser,
-    getUserProfile,
-    updateUserProfile,
-    getUsers,
-    deleteUsers,
-    updateUser,
 }
