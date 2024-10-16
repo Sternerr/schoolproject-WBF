@@ -18,7 +18,7 @@ const getHome = asyncHandler(async (req, res) => {
         }
     }
 
-    res.render("index", { activeTab: "home", products: array });
+    return res.render("homePage", { activeTab: "home", products: array });
 });
 
 // @desc Get products, creates paginated list, and render catalogue
@@ -32,7 +32,7 @@ const getCatalogue = asyncHandler(async (req, res) => {
     const totalItems = await ProductService.getProductCount();
     const totalPages = Math.ceil(totalItems.count / itemsPerPage);
 
-    res.render("catalogue", { 
+    return res.render("cataloguePage", { 
         activeTab: "catalogue", 
         products,
         pagination: {
@@ -49,19 +49,13 @@ const getCatalogue = asyncHandler(async (req, res) => {
 // @desc Render About
 // @access Public
 const getAbout = asyncHandler(async (req, res) => {
-    res.render("about", { activeTab: "about"} );
+    return res.render("aboutPage", { activeTab: "about"} );
 });
 
 // @desc Render Contact
 // @access Public
 const getContact = asyncHandler(async (req, res) => {
-    res.render("contact", { activeTab: "contact"} );
-});
-
-// @desc Render Contact
-// @access Public
-const getProduct = asyncHandler(async (req, res) => {
-    res.render("productPage");
+    return res.render("contactPage", { activeTab: "contact"} );
 });
 
 module.exports = {
@@ -69,5 +63,4 @@ module.exports = {
     getCatalogue,
     getAbout,
     getContact,
-    getProduct,
 }
