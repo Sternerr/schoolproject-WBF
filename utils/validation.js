@@ -1,10 +1,10 @@
-// @desc Validate email format with regex
+// Validation checker for email format
 const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
 
-// @desc Validate password through length 
+// Validation checker for password format
 const validatePassword = (password) => {
     return (String(password).length < 8) ? false : true;
 }
